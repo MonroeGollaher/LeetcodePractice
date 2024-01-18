@@ -17,6 +17,7 @@
 // C can be placed before D (500) and M (1000) to make 400 and 900.
 // Given a roman numeral, convert it to an integer.
 
+// PASSES ✅🤠
 const romanToInt = (str) => {
   const romanNumeralMap = {
     I: 1,
@@ -45,7 +46,6 @@ const romanToInt = (str) => {
   return result;
 };
 
-// PASSES ✅🤠
 console.log("NO. 13; ROMAN NUMERAL TO INT: ", romanToInt("MCMXCIV"));
 
 // 14. Longest Common Prefix
@@ -54,21 +54,31 @@ console.log("NO. 13; ROMAN NUMERAL TO INT: ", romanToInt("MCMXCIV"));
 
 const arrayOne = ["Blue", "Bloom", "Blunder"];
 const arrayTwo = ["Baseball", "Football", "Soccer"];
-
-const longestCommonPrefix = (stringArray) => {
-  const prefix = stringArray[0].slice(0, 2);
-
-  for (let i = 1; i < stringArray.length; i++) {
-    if (!stringArray.length) return "";
-    if (stringArray[i].slice(0, 2) !== prefix) {
-      return "";
-    }
-  }
-  return prefix;
-};
+const arrayThree = ["Baseball", "Football", "c"];
+const arrayFour = ["Car", "Cherry", "c"];
 
 // PASSES ✅🤠
+const longestCommonPrefix = (array) => {
+  if (!array.length) return "";
+
+  for (let i = 0; i <= array[0].length; i++) {
+    if (
+      !array.every(
+        (string) => string[i].toUpperCase() === array[0][i].toUpperCase()
+      )
+    ) {
+      return array[0].slice(0, i);
+    }
+  }
+
+  return array[0];
+};
+
 // Returns "Bl"
 console.log("NO. 14; LONGEST COMMON PREFIX", longestCommonPrefix(arrayOne));
 // Returns ""
 console.log("NO. 14; LONGEST COMMON PREFIX", longestCommonPrefix(arrayTwo));
+// Returns ""
+console.log("NO. 14; LONGEST COMMON PREFIX", longestCommonPrefix(arrayThree));
+// Returns "C"
+console.log("NO. 14; LONGEST COMMON PREFIX", longestCommonPrefix(arrayFour));
