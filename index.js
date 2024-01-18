@@ -47,3 +47,28 @@ const romanToInt = (str) => {
 
 // PASSES ✅🤠
 console.log("NO. 13; ROMAN NUMERAL TO INT: ", romanToInt("MCMXCIV"));
+
+// 14. Longest Common Prefix
+// Write a function to find the longest common prefix string amongst an array of strings.
+// If there is no common prefix, return an empty string "".
+
+const arrayOne = ["Blue", "Bloom", "Blunder"];
+const arrayTwo = ["Baseball", "Football", "Soccer"];
+
+const longestCommonPrefix = (stringArray) => {
+  const prefix = stringArray[0].slice(0, 2);
+
+  for (let i = 1; i < stringArray.length; i++) {
+    if (!stringArray.length) return "";
+    if (stringArray[i].slice(0, 2) !== prefix) {
+      return "";
+    }
+  }
+  return prefix;
+};
+
+// PASSES ✅🤠
+// Returns "Bl"
+console.log("NO. 14; LONGEST COMMON PREFIX", longestCommonPrefix(arrayOne));
+// Returns ""
+console.log("NO. 14; LONGEST COMMON PREFIX", longestCommonPrefix(arrayTwo));
