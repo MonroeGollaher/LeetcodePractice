@@ -1,3 +1,48 @@
+// 1. TWO SUM
+// Given an array of integers nums and an integer target, return indices of the two numbers such that they add up to target.
+
+// You may assume that each input would have exactly one solution, and you may not use the same element twice.
+
+// You can return the answer in any order.
+
+const nums = [2, 7, 11, 15];
+const target = 9;
+
+// PASSES ✅🤠
+const twoSum = (nums, target) => {
+  let hashMap = {};
+  for (let i = 0; i < nums.length; i++) {
+    const answer = target - nums[i];
+    if (answer in hashMap) {
+      return [hashMap[answer], i];
+    }
+    hashMap[nums[i]] = i;
+  }
+  return [];
+};
+
+console.log("NO. 1; twoSum: ", twoSum(nums, target));
+
+//////////////////////////////////////////////////////////////////////////////////////////
+
+// 9. PALIDRONE NUMBER
+// Given an integer x, return true if x is a palindrome, and false otherwise.
+
+// PASSES ✅🤠
+const isPalindrone = (s) => {
+  const str = s.toString();
+  const reversedStr = str.split("").reverse().join("");
+  return str === reversedStr;
+};
+
+// Returns true
+console.log("NO. 9; isPalidone number: ", isPalindrone(121));
+
+// Returns false
+console.log("NO. 9; isPalidone number: ", isPalindrone(345));
+
+//////////////////////////////////////////////////////////////////////////////////////////
+
 // 13. ROMAN NUMERAL TO INTEGER
 // Roman numerals are represented by seven different symbols: I, V, X, L, C, D and M.
 // Symbol       Value
@@ -48,7 +93,9 @@ const romanToInt = (str) => {
 
 console.log("NO. 13; ROMAN NUMERAL TO INT: ", romanToInt("MCMXCIV"));
 
-// 14. Longest Common Prefix
+//////////////////////////////////////////////////////////////////////////////////////////
+
+// 14. LONGEST COMMON PREFIX
 // Write a function to find the longest common prefix string amongst an array of strings.
 // If there is no common prefix, return an empty string "".
 
@@ -82,3 +129,43 @@ console.log("NO. 14; LONGEST COMMON PREFIX", longestCommonPrefix(arrayTwo));
 console.log("NO. 14; LONGEST COMMON PREFIX", longestCommonPrefix(arrayThree));
 // Returns "C"
 console.log("NO. 14; LONGEST COMMON PREFIX", longestCommonPrefix(arrayFour));
+
+//////////////////////////////////////////////////////////////////////////////////////////
+
+// 20. VALID PARENTHESES
+// Given a string s containing just the characters '(', ')', '{', '}', '[' and ']', determine if the input string is valid.
+
+// An input string is valid if:
+
+// Open brackets must be closed by the same type of brackets.
+// Open brackets must be closed in the correct order.
+// Every close bracket has a corresponding open bracket of the same type.
+
+const parenthesesTestOne = "[]{}()";
+const parenthesesTestTwo = "[]{}(){]";
+const validParentheses = (str) => {
+  const hashMap = {
+    "[": "]",
+    "{": "}",
+    "(": ")",
+  };
+  let stack = [];
+  for (let character of str) {
+    if (hashMap[character]) {
+      // character is an opening bracket
+      stack.push(hashMap[character]);
+    } else if (stack.length > 0 && stack[stack.length - 1] === character) {
+      // character is closing bracket and top of stack matches
+      stack.pop();
+    } else {
+      // character is a closing bracket and top of stack does not match
+      return false;
+    }
+  }
+  return stack.length === 0;
+};
+
+// Returns true
+console.log(validParentheses(parenthesesTestOne));
+// Returns false
+console.log(validParentheses(parenthesesTestTwo));
