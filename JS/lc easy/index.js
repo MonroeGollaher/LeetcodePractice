@@ -143,6 +143,8 @@ console.log("NO. 14; LONGEST COMMON PREFIX", longestCommonPrefix(arrayFour));
 
 const parenthesesTestOne = "[]{}()";
 const parenthesesTestTwo = "[]{}(){]";
+
+// PASSES ✅🤠
 const validParentheses = (str) => {
   const hashMap = {
     "[": "]",
@@ -169,3 +171,42 @@ const validParentheses = (str) => {
 console.log(validParentheses(parenthesesTestOne));
 // Returns false
 console.log(validParentheses(parenthesesTestTwo));
+
+//////////////////////////////////////////////////////////////////////////////////////////
+
+// 26. REMOVE DUPLICATES FROM ARRAY
+
+// Given an integer array nums sorted in non-decreasing order, remove the duplicates in-place such that each unique element appears only once. The relative order of the elements should be kept the same. Then return the number of unique elements in nums.
+
+// Consider the number of unique elements of nums to be k, to get accepted, you need to do the following things:
+
+// Change the array nums such that the first k elements of nums contain the unique elements in the order they were present in nums initially. The remaining elements of nums are not important as well as the size of nums.
+// Return k.
+
+// NOTE:
+// Leetcode uses poor phrasing to determine what they want you to submit for this answer. After trial and error I was able to get it to pass because I saw this comment from user @nvythedead.
+
+// "They don't really want you to remove the duplicates. They want you to sort the uniques at the front, then return the length of the sorted part. Then, behind the scenes, they slice the array at the length you give them and the result of that is what they check."
+
+const removeDuplicatesArr = [1, 1, 2];
+
+// PASSES ✅🤠
+const removeDuplicates = (numbers) => {
+  if (numbers.length === 0) {
+    return 0;
+  }
+
+  // Position of first unique element.
+  let k = 1;
+  for (let i = 1; i < numbers.length; i++) {
+    // If the current element is different from the previous one, update nums[k] and increment k
+    if (numbers[i] !== numbers[i - 1]) {
+      numbers[k] = numbers[i];
+      k++;
+    }
+  }
+
+  return k;
+};
+
+console.log("removeDuplicates", removeDuplicates(removeDuplicatesArr));
