@@ -237,3 +237,18 @@ const removeElement = (nums, val) => {
 };
 
 console.log("NO. 27: removeElement", removeElement(removeElementArr, 2));
+
+//////////////////////////////////////////////////////////////////////////////////////////
+
+// 28. FIND THE INDEX OF THE FIRST OCCURENCE IN A STRING
+
+// PASSES ✅🤠
+const strStr = (haystack, needle) => {
+  return haystack.indexOf(needle);
+};
+
+// returns 0
+console.log("NO. 28: ", strStr("sadbutsad", "sad"));
+
+// returns -1
+console.log("NO. 28: ", strStr("leetcode", "leeto"));
